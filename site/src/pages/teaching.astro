@@ -1,0 +1,205 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const BASE = import.meta.env.BASE_URL;
+
+const instructorRoles = [
+  {
+    course: 'Game Studies / Games, Strategy & AI (PRU037H1S)',
+    org: 'UofT Pre-University Programs / New College',
+    period: 'April–May 2026',
+    detail: 'Designed & independently taught a 15-session, 45-hour course; students built playable AI-enabled game prototypes in GDevelop.',
+  },
+  {
+    course: 'Critical Thinking in Statistics',
+    org: 'UofT Pre-University Programs',
+    period: 'July–August 2024 (two offerings)',
+    detail: '',
+  },
+  {
+    course: 'Applied Mathematics in Statistics; Science Across the Spectrum',
+    org: 'UofT Pre-University Programs',
+    period: 'June–July 2025',
+    detail: '',
+  },
+];
+
+const taHighlights = [
+  'CSC108 / CSC148 — Introduction to Computer Science & Data Structures',
+  'CSCB63 / CSCC63 — Data Structures & Theory of Computation',
+  'CSC311 / CSC384 — Machine Learning & Introduction to AI',
+  'STA256 / STA260 / STA457 — Probability, Statistics & Time Series',
+  'MAT223 / MAT224 — Linear Algebra',
+  'ECE361 — Communication Networks',
+];
+
+const quotes = [
+  {
+    text: 'Explained the concepts clearly and helped students during activities.',
+    source: 'Game Studies / Games, Strategy & AI course evaluation',
+  },
+  {
+    text: 'You always help and guide us through the game-developing process.',
+    source: 'Game Studies / Games, Strategy & AI course evaluation',
+  },
+  {
+    text: 'If he doesn\'t know the answer, he will research it and tell us.',
+    source: 'Game Studies / Games, Strategy & AI course evaluation',
+  },
+  {
+    text: 'I felt I learned more from asking you questions than from following the projector screen — I\'m glad I had you as the instructor.',
+    source: 'Game Studies / Games, Strategy & AI course evaluation',
+  },
+  {
+    text: 'My TA went over specific homework questions that relate to the quizzes; his way of explaining is straightforward and helpful.',
+    source: 'MAT A29 – Calculus I for the Life Sciences, Teaching Assistant (Winter 2025)',
+  },
+  {
+    text: 'The steps were broken down and explained thoroughly — there was reasoning behind each step.',
+    source: 'MAT A29 – Calculus I for the Life Sciences, Teaching Assistant (Winter 2025)',
+  },
+  {
+    text: 'Very understanding and kind, with great communication skills.',
+    source: 'MAT A29 – Calculus I for the Life Sciences, Teaching Assistant (Winter 2025)',
+  },
+];
+---
+
+<Layout
+  title="Teaching"
+  description="Ali Parchekani's academic teaching profile — instructor of record and TA across 40+ UofT courses in mathematics, CS, AI, and engineering."
+>
+  <PageHero
+    eyebrow="Academic Profile"
+    title="Teaching"
+    intro="Instructor of record and teaching assistant across 40+ distinct University of Toronto courses, spanning mathematics, statistics, computer science, AI, and engineering."
+  />
+
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-16 space-y-20">
+
+    <!-- Profile -->
+    <section data-reveal>
+      <p class="font-serif text-xl md:text-2xl leading-relaxed text-ink max-w-3xl">
+        PhD candidate in ECE at the University of Toronto with extensive teaching experience across
+        mathematics, statistics, computer science, programming, physics, AI, machine learning, data science,
+        networks, and engineering fundamentals. Supported instruction across 40+ distinct UofT courses
+        (100+ TA/course-staff appointments) and independently designed and taught pre-university enrichment
+        courses.
+      </p>
+      <p class="mt-5 font-mono text-[12px] uppercase tracking-[0.06em] text-blue-500">
+        Intuition-first explanation · Structured problem solving · Activity-based learning · Exam-focused support
+      </p>
+    </section>
+
+    <!-- Teaching effectiveness -->
+    <section>
+      <SectionHeading
+        eyebrow="Evidence"
+        title="Teaching Effectiveness"
+        note="From course evaluations (anonymized)"
+      />
+
+      <div class="border-l-2 border-blue-700 bg-paper-2 p-6 sm:p-8 mb-8" data-reveal>
+        <p class="eyebrow text-[11px] text-muted-2 mb-2">Game Studies / Games, Strategy & AI — Instructor of Record</p>
+        <p class="font-serif text-2xl md:text-3xl text-ink leading-snug">
+          All responding students rated the course <em class="text-blue-700 not-italic font-semibold">“Excellent” or “Very Good.”</em>
+        </p>
+        <p class="text-sm text-muted mt-3">16 students aged 15–18, UofT Pre-University Programs. None rated it Fair or Poor; all would recommend it.</p>
+      </div>
+
+      <ul class="grid md:grid-cols-2 gap-px bg-line border border-line">
+        {quotes.map(({ text, source }, i) => (
+          <li class="bg-paper-warm p-6" data-reveal={String((i % 2) * 80)}>
+            <blockquote class="font-serif italic text-[17px] leading-relaxed text-ink">“{text}”</blockquote>
+            <p class="mt-4 font-mono text-[11px] uppercase tracking-[0.06em] text-muted-2">{source}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Instructor experience -->
+    <section>
+      <SectionHeading eyebrow="Instructor of Record" title="Instructor Experience" />
+      <ul class="space-y-px">
+        {instructorRoles.map(({ course, org, period, detail }) => (
+          <li class="border-b border-line py-6 grid sm:grid-cols-[1fr_auto] gap-3 items-start" data-reveal>
+            <div>
+              <h3 class="font-serif font-semibold text-xl text-ink leading-snug">{course}</h3>
+              <p class="font-mono text-[12px] uppercase tracking-[0.06em] text-blue-500 mt-1.5">{org}</p>
+              {detail && <p class="mt-3 text-sm text-muted leading-relaxed max-w-2xl">{detail}</p>}
+            </div>
+            <span class="font-mono text-[11.5px] uppercase tracking-[0.06em] text-muted-2 whitespace-nowrap sm:pt-1.5">{period}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- TA experience -->
+    <section>
+      <SectionHeading
+        eyebrow="100+ Appointments"
+        title="Teaching Assistant Experience"
+        note="40+ distinct UofT courses across UTM, UTSC, and St. George. Flagship appointments:"
+      />
+      <ul class="grid sm:grid-cols-2 gap-x-10 gap-y-3" data-reveal>
+        {taHighlights.map((course) => (
+          <li class="flex items-start gap-3 text-[15px] text-ink border-b border-line-soft pb-3">
+            <span class="mt-0.5 text-blue-500 flex-shrink-0 font-mono text-[13px]" aria-hidden="true">▸</span>
+            {course}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Awards + service -->
+    <div class="grid md:grid-cols-2 gap-12">
+      <section>
+        <SectionHeading eyebrow="Recognition" title="Awards & Funding" />
+        <ul class="space-y-3 text-[15px] text-ink" data-reveal>
+          <li class="border-b border-line-soft pb-3">Doctoral Completion Award (two years), University of Toronto</li>
+          <li class="border-b border-line-soft pb-3">UofT doctoral fellowship / funding package</li>
+          <li class="border-b border-line-soft pb-3">University of Tehran undergraduate scholarship (three years)</li>
+        </ul>
+      </section>
+
+      <section>
+        <SectionHeading eyebrow="Service" title="Academic Service" />
+        <p class="text-[15px] text-ink leading-relaxed" data-reveal>
+          Peer reviewer for IEEE GLOBECOM, ICC, PIMRC, and VTC — 5 reviews, 2021–2025.
+        </p>
+      </section>
+    </div>
+
+    <!-- PDFs -->
+    <section class="border-t-2 border-ink pt-8" data-reveal>
+      <p class="eyebrow text-[11.5px] text-blue-500 mb-4">Documents</p>
+      <div class="flex flex-wrap gap-4">
+        <a
+          href={`${BASE}/files/academic-teaching-cv.pdf`}
+          class="inline-flex items-center gap-2 bg-blue-700 text-on-accent font-semibold px-5 py-3 hover:bg-blue-500 transition-colors text-sm"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          Academic / Teaching CV
+        </a>
+        <a
+          href={`${BASE}/files/teaching-philosophy.pdf`}
+          class="inline-flex items-center gap-2 border border-blue-700 text-blue-700 font-semibold px-5 py-3 hover:bg-blue-700 hover:text-on-accent transition-colors text-sm"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          Teaching Philosophy
+        </a>
+      </div>
+    </section>
+
+  </div>
+</Layout>

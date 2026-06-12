@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const papers = [
+  {
+    authors: 'A. Parchekani, S. Valaee',
+    title: 'Reconfigurable Intelligent Surface Assisted Sensing and Localization using the Swendsen–Wang and Evolutionary Algorithms',
+    venue: 'IEEE VTC 2023-Fall',
+    type: 'conference',
+  },
+  {
+    authors: 'A. Parchekani, S. Valaee',
+    title: 'Sensing and Localization using Reconfigurable Intelligent Surfaces and the Swendsen–Wang Algorithm',
+    venue: 'IEEE ICC Workshops 2022',
+    type: 'conference',
+  },
+  {
+    authors: 'A. Parchekani, S. Valaee',
+    title: 'Sensing via Orthogonal Time Frequency Space Signalling and Reconfigurable Intelligent Surface',
+    venue: 'IEEE PIMRC 2022',
+    type: 'conference',
+  },
+  {
+    authors: 'A. Parchekani, M. Johnny, S. Valaee',
+    title: 'Model-Based Deep Learning Tuning of Reconfigurable Intelligent Surface for OFDM Radar Interference Mitigation',
+    venue: 'IEEE PIMRC 2025',
+    type: 'conference',
+  },
+];
+
+const preprints = [
+  {
+    authors: 'A. Parchekani, S. Nouri, V. Shah-Mansouri, S. P. Shariatpanahi',
+    title: 'Classification of Traffic using Neural Networks by Rejecting: A Novel Approach in Classifying VPN Traffic',
+    id: 'arXiv:2001.03665',
+  },
+  {
+    authors: 'A. Parchekani, M. Johnny, S. Valaee',
+    title: 'Reconfigurable Intelligent Surface for OFDM Radar Interference Mitigation',
+    id: 'arXiv:2502.14730',
+  },
+];
+---
+
+<Layout
+  title="Research"
+  description="Ali Parchekani's research in wireless sensing, radar signal processing, reconfigurable intelligent surfaces, and applied ML — with 4 peer-reviewed IEEE publications."
+>
+  <PageHero
+    eyebrow="Academic Research"
+    title="Research"
+    intro="Wireless sensing, radar signal processing, reconfigurable intelligent surfaces (RIS), optimization, and applied ML — with peer-reviewed IEEE publications."
+  />
+
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-16 space-y-20">
+
+    <!-- Summary -->
+    <section data-reveal>
+      <p class="font-serif text-xl md:text-2xl leading-relaxed text-ink max-w-3xl">
+        My doctoral research focuses on enabling intelligent, adaptive wireless sensing using
+        Reconfigurable Intelligent Surfaces (RIS). I design optimization suites — combining
+        evolutionary search, Swendsen–Wang MCMC, coordinate descent, and gradient-based convex
+        relaxation — to control high-dimensional discrete phase elements for radar sensing and
+        localization.
+      </p>
+      <p class="text-base leading-relaxed text-muted max-w-3xl mt-5 border-l-2 border-blue-700 pl-5">
+        A secondary thread applies model-based deep learning to suppress interference
+        in OFDM radar systems, improving detection accuracy by 50% while cutting training-data
+        requirements by 20%.
+      </p>
+    </section>
+
+    <!-- Peer-reviewed papers -->
+    <section>
+      <SectionHeading eyebrow="Peer-Reviewed" title="Conference Papers" />
+      <ol class="space-y-px" reversed>
+        {papers.map(({ authors, title, venue }, i) => (
+          <li class="grid grid-cols-[48px_1fr] sm:grid-cols-[64px_1fr_auto] gap-4 sm:gap-6 items-start border-b border-line py-6" data-reveal>
+            <span class="font-serif font-semibold text-3xl text-blue-700/30 leading-none pt-0.5">{String(papers.length - i).padStart(2, '0')}</span>
+            <div>
+              <p class="font-serif font-semibold text-lg md:text-xl text-ink leading-snug">{title}</p>
+              <p class="text-sm text-muted mt-1.5">{authors}</p>
+              <span class="sm:hidden inline-block mt-2 font-mono text-[11px] uppercase tracking-[0.06em] text-blue-700">{venue}</span>
+            </div>
+            <span class="hidden sm:inline-block font-mono text-[11.5px] uppercase tracking-[0.06em] text-blue-700 bg-blue-50 px-3 py-1.5 whitespace-nowrap">{venue}</span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- Preprints -->
+    <section>
+      <SectionHeading eyebrow="In Progress" title="Preprints" />
+      <ul class="space-y-px">
+        {preprints.map(({ authors, title, id }) => (
+          <li class="border-b border-line py-6 grid sm:grid-cols-[1fr_auto] gap-3 items-start" data-reveal>
+            <div>
+              <p class="font-serif font-semibold text-lg md:text-xl text-ink leading-snug">{title}</p>
+              <p class="text-sm text-muted mt-1.5">{authors}</p>
+            </div>
+            <span class="font-mono text-[11.5px] text-muted-2 whitespace-nowrap sm:pt-1">{id}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Google Scholar CTA -->
+    <section class="border-t-2 border-ink pt-8" data-reveal>
+      <p class="eyebrow text-[11.5px] text-blue-500 mb-4">Full Publication List</p>
+      <a
+        href="https://scholar.google.com/citations?user=soH-zaAAAAAJ&hl=en"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 bg-blue-700 text-on-accent font-semibold px-5 py-3 hover:bg-blue-500 transition-colors text-sm"
+      >
+        View on Google Scholar
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+        </svg>
+      </a>
+    </section>
+
+  </div>
+</Layout>

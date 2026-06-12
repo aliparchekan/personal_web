@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const BASE = import.meta.env.BASE_URL;
+---
+
+<Layout
+  title="About"
+  description="About Ali Parchekani — PhD candidate, educator, and applied ML engineer at the University of Toronto."
+>
+  <PageHero eyebrow="About" title="Ali Parchekani" />
+
+  <div class="max-w-3xl mx-auto px-5 sm:px-8 py-16">
+    <div class="space-y-7 text-[16.5px] leading-relaxed text-muted">
+
+      <p class="font-serif text-xl md:text-[22px] leading-relaxed text-ink" data-reveal>
+        I am a PhD candidate in Electrical and Computer Engineering at the University of Toronto,
+        working in the Wireless Internet Research Lab under Professor Shahrokh Valaee. My doctoral
+        research centers on intelligent wireless sensing — specifically, how Reconfigurable Intelligent
+        Surfaces (RIS) can be optimized to enable precise radar-based localization and sensing in complex
+        environments. My work combines optimization theory (evolutionary algorithms, Markov Chain Monte
+        Carlo, convex relaxation) with model-based deep learning, and has resulted in four peer-reviewed
+        IEEE conference publications with manuscripts currently under review.
+      </p>
+
+      <p data-reveal>
+        Before Toronto, I completed my M.Sc. in Electrical Engineering — Communication Systems at
+        the University of Tehran, graduating <strong class="text-ink">ranked 1st</strong> in my cohort, and my B.Sc.
+        in the same department, finishing <strong class="text-ink">ranked 3rd</strong>. My M.Sc. has been
+        credential-evaluated as equivalent to a U.S. M.S. in Electrical Engineering
+        (Communication Systems emphasis). I expect to complete my PhD in <strong class="text-ink">August 2026</strong>.
+      </p>
+
+      <p data-reveal>
+        Alongside my research, teaching has always been central to how I work. I have supported
+        instruction across <strong class="text-ink">40+ distinct University of Toronto courses</strong> — spanning
+        UTM, UTSC, and St. George — as a teaching assistant and course instructor. The courses range
+        from introductory programming and calculus to machine learning, AI, data structures, and
+        communication networks. I have also independently designed and taught pre-university enrichment
+        courses for high school students: a games, strategy, and AI course in which students built
+        playable AI-enabled prototypes, and two iterations of a critical thinking in statistics course.
+        Student evaluations consistently highlight clear explanation, patience, and the ability to make
+        abstract ideas concrete.
+      </p>
+
+      <p data-reveal>
+        On the industry side, I have spent six-plus years building ML systems in production and research
+        settings. At HARA AI in Tehran, I developed the NLU layer for a Persian automated call-center,
+        working with transformer models on a 10M+ sentence corpus. At the University of Tehran, I built
+        ML pipelines for network traffic classification using deep learning. My current research involves
+        end-to-end simulation pipelines, config-driven experiment management, and the kind of rigorous
+        experimental design that bridges academic rigor with engineering practice. More recently I have
+        been building agentic AI systems — multi-agent architectures with LangGraph, OpenAI Agents SDK,
+        and CrewAI — and exploring the intersection of language models and autonomous task completion.
+      </p>
+
+      <p class="border-l-2 border-blue-700 pl-5 text-ink" data-reveal>
+        I am based in Toronto, Ontario, and available for academic teaching positions, high-touch STEM
+        tutoring (in-person in the GTA or online), and engineering/research collaborations.
+      </p>
+
+      <div class="pt-4 flex flex-wrap gap-4" data-reveal>
+        <a
+          href={`${BASE}/teaching/`}
+          class="inline-block bg-blue-700 text-on-accent font-semibold px-5 py-3 hover:bg-blue-500 transition-colors text-sm"
+        >
+          Teaching profile
+        </a>
+        <a
+          href={`${BASE}/research/`}
+          class="inline-block border border-blue-700 text-blue-700 font-semibold px-5 py-3 hover:bg-blue-700 hover:text-on-accent transition-colors text-sm"
+        >
+          Research
+        </a>
+        <a
+          href={`${BASE}/contact/`}
+          class="inline-block border border-line text-muted font-semibold px-5 py-3 hover:border-blue-700 hover:text-blue-700 transition-colors text-sm"
+        >
+          Get in touch
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

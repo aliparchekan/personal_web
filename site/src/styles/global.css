@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+
+  --color-blue-900: #163a5c;
+  --color-blue-700: #1F4E79;
+  --color-blue-500: #2E75B6;
+  --color-blue-100: #dce8f4;
+  --color-blue-50: #eef4fb;
+
+  --color-ink: #16222e;
+  --color-muted: #5b6b78;
+  --color-muted-2: #7c8a96;
+
+  --color-paper: #ffffff;
+  --color-paper-2: #f6f8fb;
+  --color-paper-warm: #f7f6f1;
+
+  --color-line: rgba(31, 78, 121, 0.16);
+  --color-line-soft: rgba(31, 78, 121, 0.10);
+
+  /* text/icon color used on top of blue-700 buttons */
+  --color-on-accent: #ffffff;
+
+  /* primary / secondary aliases */
+  --color-primary: #1F4E79;
+  --color-secondary: #2E75B6;
+}
+
+/* ── Dark theme ─────────────────────────────────────────────── */
+html.dark {
+  --color-blue-900: #b9d4ee;
+  --color-blue-700: #7cb1e2;
+  --color-blue-500: #74a9da;
+  --color-blue-100: rgba(124, 177, 226, 0.18);
+  --color-blue-50: rgba(124, 177, 226, 0.10);
+
+  --color-ink: #e7ecf2;
+  --color-muted: #a3b2c0;
+  --color-muted-2: #7d8c9b;
+
+  --color-paper: #151d26;
+  --color-paper-2: #19222d;
+  --color-paper-warm: #10161d;
+
+  --color-line: rgba(151, 186, 219, 0.22);
+  --color-line-soft: rgba(151, 186, 219, 0.12);
+
+  --color-on-accent: #0d1319;
+
+  --color-primary: #7cb1e2;
+  --color-secondary: #74a9da;
+}
+
+html {
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+  background: var(--color-paper-warm);
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html, body {
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+body {
+  color: var(--color-ink);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+}
+
+::selection {
+  background: var(--color-blue-100);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-blue-500);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Mono eyebrow / label helper */
+.eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Decorative background: fine grid fading downward ───────── */
+.bg-deco-grid {
+  background-image:
+    linear-gradient(var(--color-line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line-soft) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent 520px);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent 520px);
+}
+
+/* ── Scroll-reveal animation (JS adds .is-visible) ───────────── */
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  html.js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Animated link underline (nav) ──────────────────────────── */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 1px;
+  width: 100%;
+  background: var(--color-blue-700);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link[aria-current='page']::after {
+  transform: scaleX(1);
+}
+
+/* ── Card hover lift ─────────────────────────────────────────── */
+.card-lift {
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.card-lift:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-blue-500);
+  box-shadow: 0 10px 30px -18px rgba(31, 78, 121, 0.35);
+}
+html.dark .card-lift:hover {
+  box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.7);
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-lift, .card-lift:hover { transform: none; }
+}

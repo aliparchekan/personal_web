@@ -1,0 +1,183 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const BASE = import.meta.env.BASE_URL;
+
+const experience = [
+  {
+    title: 'Research Assistant — Applied ML & Wireless Sensing',
+    org: 'University of Toronto, Wireless Internet Research Lab',
+    period: 'Jan 2021 – Present',
+    bullets: [
+      'Designed optimization suites (evolutionary search, Swendsen–Wang MCMC, coordinate descent, gradient + convex-relaxation baselines) for high-dimensional discrete phase-control in wireless sensing.',
+      'Built end-to-end automotive radar simulation pipelines (NumPy/SciPy/Matplotlib + MATLAB Engine); config-driven experiments (YAML/JSON).',
+      'Raised radar object-detection accuracy 50%; cut training-data needs 20% and improved localization accuracy 10% with model-based deep learning.',
+      'Delivered system-design reports and presentations to Huawei.',
+      '4 peer-reviewed IEEE papers + manuscripts under review.',
+    ],
+  },
+  {
+    title: 'Data Scientist',
+    org: 'HARA AI, Tehran',
+    period: 'Jan 2020 – Jan 2021',
+    bullets: [
+      'Built the NLU layer for a Persian automated call-center: 10M+ sentence corpus, transformer intent classification (BERT/ALBERT/DistilBERT in PyTorch).',
+      'Offline eval workflows achieving >85% intent accuracy; deployed behind FastAPI with >70% end-to-end production accuracy.',
+    ],
+  },
+  {
+    title: 'Research Assistant — Network Traffic Analysis & ML',
+    org: 'University of Tehran, Wireless Multimedia Communications Lab',
+    period: 'Sep 2018 – Jan 2021',
+    bullets: [
+      'ML pipelines for traffic/VPN classification and user-behavior modeling; processed 500K+ packet records (PySpark/pandas/NumPy).',
+      'CNN/RNN/MLP classifiers (PyTorch/TF/Keras/scikit-learn, >85% accuracy); inverse reinforcement learning for latent user behavior.',
+      'arXiv manuscript on VPN traffic classification with rejection.',
+    ],
+  },
+];
+
+const projects = [
+  {
+    title: 'Career Digital Twin — Serverless Conversational AI Agent',
+    desc: 'Personalized agent answering questions about background, research, and projects using OpenAI models and grounded knowledge files.',
+    tags: ['OpenAI API', 'FastAPI', 'Next.js', 'AWS Lambda', 'API Gateway', 'CloudFront', 'S3', 'Terraform'],
+  },
+  {
+    title: 'LangGraph Sidekick — Stateful Browser-Integrated AI Assistant',
+    desc: 'Multi-node LangGraph agent with persistent memory, conditional routing, tool-use approval gates, self-correction, and separate planning/execution/evaluation/response nodes; browser automation, file handling, code execution; human-in-the-loop guardrails.',
+    tags: ['LangGraph', 'Browser Automation', 'Human-in-the-loop'],
+  },
+  {
+    title: 'Deep Research Multi-Agent System',
+    desc: 'OpenAI Agents SDK + Gradio pipeline with planner/search/writer/email agents, typed outputs, rate-limited parallel search, synthesis, and structured reports.',
+    tags: ['OpenAI Agents SDK', 'Gradio', 'Multi-agent', 'Structured Outputs'],
+  },
+  {
+    title: 'Multi-Agent Engineering Team — CrewAI Software Builder',
+    desc: 'Four-agent (manager/developer/reviewer/tester) workflow; Docker-isolated build/run/test/debug cycles; iterative feedback.',
+    tags: ['CrewAI', 'Docker', 'Multi-agent'],
+  },
+  {
+    title: 'Short-Term Rental Price Prediction — Production-Style ML Pipeline',
+    desc: 'Reproducible end-to-end pipeline with scikit-learn, MLflow, Weights & Biases, DVC, Hydra; data validation, feature engineering, random-forest training, hyperparameter tuning, experiment tracking.',
+    tags: ['scikit-learn', 'MLflow', 'W&B', 'DVC', 'Hydra'],
+  },
+];
+
+const skills: Record<string, string[]> = {
+  'Languages': ['Python', 'SQL', 'TypeScript', 'JavaScript', 'C', 'C++', 'MATLAB', 'LaTeX'],
+  'Agentic AI & LLM Frameworks': ['LangGraph', 'OpenAI Agents SDK', 'CrewAI', 'MCP', 'Microsoft AutoGen', 'OpenAI API', 'Anthropic API', 'Gradio', 'RAG', 'Embeddings', 'Tool Calling', 'Structured Outputs'],
+  'ML & Deep Learning': ['PyTorch', 'scikit-learn', 'TensorFlow', 'Keras', 'Transformers'],
+  'Scientific Computing & Data': ['NumPy', 'SciPy', 'Matplotlib', 'pandas', 'PySpark'],
+  'Backend, APIs & Web': ['FastAPI', 'Next.js', 'REST APIs', 'Pydantic', 'PostgreSQL', 'Redis', 'MongoDB'],
+  'MLOps & Experiment Tracking': ['MLflow', 'Weights & Biases', 'DVC', 'Hydra', 'Docker', 'GitHub Actions', 'Git', 'Linux', 'Bash'],
+  'AWS & Infrastructure': ['AWS Lambda', 'API Gateway', 'CloudFront', 'S3', 'EC2', 'VPC', 'IAM', 'RDS', 'Terraform'],
+  'Signal Processing & Wireless': ['OFDM Radar Processing', 'DoA Estimation', 'Range-Doppler Analysis', 'Target Detection & Tracking', 'Vehicular Channel Modeling', 'Intelligent-Surface Phase Optimization'],
+  'Methods & Practices': ['Optimization', 'Gradient/Coordinate Descent', 'Convex Relaxation', 'Evolutionary Algorithms', 'MCMC', 'Statistical Inference', 'Experimental Design', 'Ablation Studies', 'Reproducible ML Pipelines', 'CI/CD'],
+};
+---
+
+<Layout
+  title="Industry"
+  description="Ali Parchekani — Applied ML engineer and PhD researcher with 6+ years across ML pipelines, agentic AI systems, and wireless sensing."
+>
+  <PageHero
+    eyebrow="Engineering"
+    title="Industry & Applied AI"
+    intro="Applied ML engineer and PhD researcher with 6+ years across ML pipelines, optimization algorithms, and data-driven decision frameworks, with a recent focus on agentic AI systems."
+  />
+
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-16 space-y-20">
+
+    <!-- Summary -->
+    <section data-reveal>
+      <p class="font-serif text-xl md:text-2xl leading-relaxed text-ink max-w-3xl">
+        Deep research background in statistical evaluation, experimentation, signal processing, and
+        high-dimensional optimization, with hands-on engineering across LangGraph, OpenAI Agents SDK,
+        FastAPI, Next.js, PyTorch, and MLOps tooling. I translate complex research and product requirements
+        into reproducible, evaluation-driven, deployable systems.
+      </p>
+    </section>
+
+    <!-- Experience -->
+    <section>
+      <SectionHeading eyebrow="Track Record" title="Experience" />
+      <div class="space-y-10">
+        {experience.map(({ title, org, period, bullets }) => (
+          <div class="grid md:grid-cols-[200px_1fr] gap-4 md:gap-8 border-b border-line pb-10" data-reveal>
+            <div>
+              <span class="font-mono text-[11.5px] uppercase tracking-[0.06em] text-muted-2">{period}</span>
+            </div>
+            <div>
+              <h3 class="font-serif font-semibold text-xl md:text-2xl text-ink leading-snug">{title}</h3>
+              <p class="font-mono text-[12px] uppercase tracking-[0.06em] text-blue-500 mt-1.5">{org}</p>
+              <ul class="mt-4 space-y-2.5">
+                {bullets.map((b) => (
+                  <li class="flex items-start gap-3 text-[15px] text-muted leading-relaxed">
+                    <span class="text-blue-500 mt-0.5 flex-shrink-0 font-mono text-[13px]" aria-hidden="true">▸</span>
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section>
+      <SectionHeading eyebrow="Agentic AI & ML" title="Selected Projects" />
+      <div class="grid md:grid-cols-2 gap-5">
+        {projects.map(({ title, desc, tags }, i) => (
+          <div class="card-lift bg-paper border border-line p-6 sm:p-7 flex flex-col" data-reveal={String((i % 2) * 80)}>
+            <h3 class="font-serif font-semibold text-lg md:text-xl text-ink leading-snug mb-2.5">{title}</h3>
+            <p class="text-sm text-muted leading-relaxed flex-1">{desc}</p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              {tags.map((tag) => (
+                <span class="font-mono text-[10.5px] uppercase tracking-[0.04em] bg-blue-50 text-blue-700 px-2.5 py-1">{tag}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section>
+      <SectionHeading eyebrow="Toolbox" title="Technical Skills" />
+      <div class="space-y-8">
+        {Object.entries(skills).map(([group, items]) => (
+          <div class="grid md:grid-cols-[200px_1fr] gap-3 md:gap-8 border-b border-line-soft pb-7" data-reveal>
+            <h3 class="font-mono text-[11.5px] uppercase tracking-[0.08em] text-muted-2 md:pt-1.5">{group}</h3>
+            <div class="flex flex-wrap gap-2">
+              {items.map((item) => (
+                <span class="text-[13px] border border-line text-ink px-3 py-1 hover:border-blue-500 transition-colors">{item}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Resume CTA -->
+    <section class="border-t-2 border-ink pt-8" data-reveal>
+      <p class="eyebrow text-[11.5px] text-blue-500 mb-4">Resume</p>
+      <a
+        href={`${BASE}/files/industry-resume.pdf`}
+        class="inline-flex items-center gap-2 bg-blue-700 text-on-accent font-semibold px-5 py-3 hover:bg-blue-500 transition-colors text-sm"
+        target="_blank"
+        rel="noopener"
+      >
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+        Download Industry Resume (PDF)
+      </a>
+    </section>
+
+  </div>
+</Layout>
