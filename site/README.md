@@ -13,11 +13,11 @@ npm run preview   # preview the production build locally
 
 ## Deploying to GitHub Pages
 
-1. **Create the repo** on GitHub (e.g. `aliparchekan/personal_web_claude`).
+1. **Create the repo** on GitHub (e.g. `aliparchekan/personal_web`).
 2. In `astro.config.mjs`, update `site` and `base` to match your repo:
    ```js
    site: 'https://aliparchekan.github.io',
-   base: '/personal_web_claude',  // ← your repo name
+   base: '/personal_web',  // ← your repo name
    ```
 3. Push to the `main` branch. The GitHub Actions workflow (`.github/workflows/deploy.yml`) builds and deploys automatically.
 4. In your repo settings → Pages → Source, select **GitHub Actions**.

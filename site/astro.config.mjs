@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://aliparchekan.github.io',
-  base: '/personal_web_claude',
+  base: '/personal_web',
   vite: {
     plugins: [tailwindcss()],
   },

@@ -56,9 +56,9 @@ const mailto = 'mailto:aliparchekan@gmail.com?subject=Tutoring%20inquiry%20%E2%8
   description="PhD-level, high-touch STEM tutoring with Ali Parchekani. High school, university, and graduate-level subjects including calculus, AI, ML, Python, and more."
 >
   <PageHero
-    eyebrow="Premium Tutoring"
+    eyebrow="1:1 Tutoring & Mentorship"
     title="STEM Tutoring & Mentorship"
-    intro="PhD-level, high-touch tutoring and academic mentorship for ambitious learners — from high school through graduate and professional study."
+    intro="High-touch 1:1 STEM tutoring and mentorship for ambitious students who need clarity, structure, and expert guidance — from high school through graduate and professional study."
   />
   <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-8" data-reveal>
     <a href={mailto} class="inline-flex items-center gap-2 bg-blue-700 text-on-accent font-semibold px-6 py-3 hover:bg-blue-500 transition-colors text-sm">
@@ -116,6 +116,28 @@ const mailto = 'mailto:aliparchekan@gmail.com?subject=Tutoring%20inquiry%20%E2%8
       </ol>
     </section>
 
+    <!-- First session -->
+    <section>
+      <SectionHeading
+        eyebrow="Getting Started"
+        title="What a First Session Includes"
+        note="Every engagement starts with understanding where the student actually is."
+      />
+      <ul class="grid sm:grid-cols-2 gap-x-10 gap-y-6">
+        {[
+          { title: 'Diagnostic review', desc: 'A careful look at current course material, recent assessments, and how the student approaches problems.' },
+          { title: 'Weakness map & priority topics', desc: 'A clear picture of which gaps matter most, and in what order to address them.' },
+          { title: '2–3 week study plan', desc: 'A concrete, realistic plan for the next few weeks — not a vague promise of improvement.' },
+          { title: 'Parent / student summary', desc: 'When appropriate, a short written summary of findings and the plan after the session.' },
+        ].map(({ title, desc }, i) => (
+          <li class="border-b border-line-soft pb-6" data-reveal={String((i % 2) * 80)}>
+            <h3 class="font-serif font-semibold text-lg text-ink">{title}</h3>
+            <p class="text-sm text-muted mt-1 leading-relaxed">{desc}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
     <!-- Testimonials -->
     <section>
       <SectionHeading
@@ -137,8 +159,13 @@ const mailto = 'mailto:aliparchekan@gmail.com?subject=Tutoring%20inquiry%20%E2%8
     <section class="border-t-2 border-ink pt-8" data-reveal>
       <p class="eyebrow text-[11.5px] text-blue-500 mb-3">Availability & Rates</p>
       <p class="font-serif text-xl md:text-2xl text-ink leading-relaxed max-w-2xl">
-        Toronto/GTA in-person and online. Canadian and international students welcome.
-        Rates by consultation.
+        Sessions are available in person across Toronto/GTA and online. Canadian and
+        international students welcome.
+      </p>
+      <p class="text-[15px] text-muted leading-relaxed max-w-2xl mt-4">
+        Rates are discussed during an initial consultation and depend on level, goals, and
+        session format. This keeps the focus on fit first — the first conversation is about
+        whether I'm the right person to help.
       </p>
       <div class="mt-7 flex flex-wrap items-center gap-5">
         <a
@@ -155,7 +182,7 @@ const mailto = 'mailto:aliparchekan@gmail.com?subject=Tutoring%20inquiry%20%E2%8
           class="font-mono text-[12px] uppercase tracking-[0.06em] text-blue-700 underline underline-offset-4 hover:text-blue-500 transition-colors"
           target="_blank"
           rel="noopener"
-        >Premium Tutoring Profile (PDF)</a>
+        >Tutoring Profile (PDF)</a>
       </div>
     </section>
 

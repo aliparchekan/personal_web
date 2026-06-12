@@ -6,47 +6,46 @@ const BASE = import.meta.env.BASE_URL;
 const rows = [
   {
     n: '01',
-    title: 'Teaching',
+    title: 'Industry & AI Engineering',
+    meta: 'For engineering teams',
+    desc: 'Applied AI, ML pipelines, agentic systems, and scientific computing — with PhD-level rigor and production-oriented engineering.',
+    cta: 'See my engineering work',
+    href: `${BASE}/industry/`,
+  },
+  {
+    n: '02',
+    title: 'Teaching & Course Instruction',
     meta: 'For hiring committees',
     desc: 'University instructor and TA across 40+ distinct UofT courses. Intuition-first explanation, structured problem solving, and consistently strong student evaluations.',
     cta: 'Hire me to teach',
     href: `${BASE}/teaching/`,
   },
   {
-    n: '02',
-    title: 'Tutoring',
+    n: '03',
+    title: 'Premium STEM Tutoring',
     meta: 'For students & families',
-    desc: 'Premium, high-touch 1:1 STEM coaching in mathematics, physics, statistics, programming, and computer science — built around each student.',
+    desc: 'High-touch 1:1 STEM tutoring and mentorship for ambitious students who need clarity, structure, and expert guidance.',
     cta: 'Book tutoring',
     href: `${BASE}/tutoring/`,
-  },
-  {
-    n: '03',
-    title: 'Industry',
-    meta: 'For engineering teams',
-    desc: 'Applied machine learning, wireless sensing, and agentic-AI systems — taken from research to production.',
-    cta: 'See my engineering work',
-    href: `${BASE}/industry/`,
   },
 ];
 
 const highlights = [
   { meta: 'Experience', text: '6+ years applied ML & research' },
+  { meta: 'Industry', text: '50% radar detection-accuracy gain' },
   { meta: 'Research', text: '4 peer-reviewed IEEE papers' },
   { meta: 'Teaching', text: '40+ distinct UofT courses taught / TA’d' },
-  { meta: 'Industry', text: '50% radar detection-accuracy gain' },
 ];
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Ali Parchekani',
-  jobTitle: 'PhD Candidate, Educator, and Engineer',
+  jobTitle: 'Applied AI/ML Engineer and PhD Candidate',
   affiliation: { '@type': 'EducationalOrganization', name: 'University of Toronto' },
   email: 'aliparchekan@gmail.com',
-  telephone: '+16477667304',
   address: { '@type': 'PostalAddress', addressLocality: 'Toronto', addressRegion: 'ON', addressCountry: 'CA' },
-  url: 'https://aliparchekan.github.io/personal_web_claude/',
+  url: 'https://aliparchekan.github.io/personal_web/',
   sameAs: [
     'https://www.linkedin.com/in/ali-parchekani-6a2978b0/',
     'https://github.com/aliparchekan',
@@ -57,7 +56,7 @@ const jsonLd = {
 
 <Layout
   title="Home"
-  description="Ali Parchekani — PhD Candidate, Educator, and Engineer at the University of Toronto. Academic teaching, premium STEM tutoring, and applied ML engineering."
+  description="Ali Parchekani — Applied AI/ML engineer and UofT ECE PhD candidate. Industry & AI engineering, academic teaching, and high-touch STEM tutoring."
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
@@ -67,18 +66,18 @@ const jsonLd = {
   <header class="max-w-6xl mx-auto px-5 sm:px-8 pt-16 md:pt-20 pb-12">
     <div class="grid md:grid-cols-[1fr_0.42fr] gap-10 items-end">
       <div>
-        <p class="eyebrow text-[12.5px] text-blue-500" data-reveal>PhD Candidate · Educator · Engineer</p>
+        <p class="eyebrow text-[12.5px] text-blue-500" data-reveal>UofT ECE PhD Candidate</p>
         <h1 class="font-serif font-semibold text-[15vw] sm:text-7xl md:text-8xl leading-[0.94] tracking-[-0.035em] mt-4" data-reveal="80">
           Ali<br />Parchekani
         </h1>
         <p class="font-serif italic text-2xl md:text-[34px] text-blue-700 mt-5 tracking-tight" data-reveal="160">
-          PhD Candidate, Educator, and Engineer
+          Applied AI / ML Engineer &amp; Educator
         </p>
       </div>
       <p class="text-base md:text-[16.5px] leading-relaxed text-muted border-l-2 border-blue-700 pl-5" data-reveal="240">
-        University of Toronto ECE PhD candidate. I teach technical subjects clearly,
-        mentor ambitious students, and build AI and wireless systems — where research rigor,
-        teaching, and production machine learning meet.
+        I am a UofT ECE PhD candidate working at the intersection of wireless sensing,
+        applied AI, and technical education. I help universities, students, and engineering
+        teams turn difficult technical ideas into clear, working systems.
       </p>
     </div>
   </header>
@@ -133,9 +132,9 @@ const jsonLd = {
       <p class="eyebrow text-[12px] text-blue-500 mb-4">About</p>
       <p class="font-serif text-xl md:text-2xl leading-relaxed text-ink">
         University of Toronto Electrical &amp; Computer Engineering PhD candidate specializing in
-        wireless sensing, signal processing, optimization, and applied machine learning, with a recent
-        focus on agentic AI systems. Alongside research, an experienced educator across 40+ distinct
-        UofT courses and instructor of pre-university statistics, AI, and game-design courses.
+        applied machine learning, wireless sensing, signal processing, and optimization, with a recent
+        focus on agentic AI systems. Alongside research and engineering, an experienced educator across
+        40+ distinct UofT courses and instructor of pre-university statistics, AI, and game-design courses.
       </p>
       <a href={`${BASE}/about/`} class="font-mono text-[12px] uppercase tracking-[0.06em] text-blue-700 mt-6 inline-block hover:text-blue-500 transition-colors">
         Read my full bio →
