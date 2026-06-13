@@ -30,11 +30,18 @@ const rows = [
   },
 ];
 
-const highlights = [
-  { meta: 'Experience', text: '6+ years applied ML & research' },
-  { meta: 'Industry', text: '50% radar detection-accuracy gain' },
-  { meta: 'Research', text: '4 peer-reviewed IEEE papers' },
-  { meta: 'Teaching', text: '40+ distinct UofT courses taught / TA’d' },
+const stats = [
+  { meta: 'Experience', num: 6, suffix: '+', label: 'Years applied ML & research' },
+  { meta: 'Industry', num: 50, suffix: '%', label: 'Radar detection-accuracy gain' },
+  { meta: 'Research', num: 4, suffix: '', label: 'Peer-reviewed IEEE papers' },
+  { meta: 'Teaching', num: 40, suffix: '+', label: 'Distinct UofT courses taught / TA’d' },
+];
+
+const roles = [
+  'Applied AI / ML Engineer',
+  'Educator & Course Instructor',
+  'Wireless-Sensing Researcher',
+  'STEM Tutor & Mentor',
 ];
 
 const jsonLd = {
@@ -66,12 +73,14 @@ const jsonLd = {
   <header class="max-w-6xl mx-auto px-5 sm:px-8 pt-16 md:pt-20 pb-12">
     <div class="grid md:grid-cols-[1fr_0.42fr] gap-10 items-end">
       <div>
-        <p class="eyebrow text-[12.5px] text-blue-500" data-reveal>UofT ECE PhD Candidate</p>
+        <p class="eyebrow text-[12.5px] text-blue-500 flex items-center gap-2.5" data-reveal>
+          <span class="live-dot"></span> UofT ECE PhD Candidate · Available 2026
+        </p>
         <h1 class="font-serif font-semibold text-[15vw] sm:text-7xl md:text-8xl leading-[0.94] tracking-[-0.035em] mt-4" data-reveal="80">
-          Ali<br />Parchekani
+          Ali<br /><span class="text-gradient">Parchekani</span>
         </h1>
-        <p class="font-serif italic text-2xl md:text-[34px] text-blue-700 mt-5 tracking-tight" data-reveal="160">
-          Applied AI / ML Engineer &amp; Educator
+        <p class="font-serif italic text-2xl md:text-[34px] text-blue-700 mt-5 tracking-tight min-h-[1.4em]" data-reveal="160">
+          <span id="role-typer" data-roles={JSON.stringify(roles)}>Applied AI / ML Engineer</span><span class="type-caret" aria-hidden="true"></span>
         </p>
       </div>
       <p class="text-base md:text-[16.5px] leading-relaxed text-muted border-l-2 border-blue-700 pl-5" data-reveal="240">
@@ -89,7 +98,7 @@ const jsonLd = {
         <li data-reveal={String(i * 90)}>
           <a
             href={href}
-            class="group grid grid-cols-[40px_1fr_auto] sm:grid-cols-[78px_1fr_auto] gap-4 sm:gap-7 items-center py-7 sm:py-8 border-b border-line transition-colors hover:bg-paper"
+            class="row-link group grid grid-cols-[40px_1fr_auto] sm:grid-cols-[78px_1fr_auto] gap-4 sm:gap-7 items-center py-7 sm:py-8 pl-3 sm:pl-5 border-b border-line transition-colors hover:bg-paper"
           >
             <span class="font-mono text-[13px] sm:text-[14px] text-blue-500 self-start pt-2">{n}</span>
             <div>
@@ -116,10 +125,13 @@ const jsonLd = {
         <p class="font-mono text-[12px] uppercase tracking-[0.1em] text-ink leading-relaxed">Selected<br />Highlights</p>
       </div>
       <ul class="grid sm:grid-cols-2 lg:grid-cols-4">
-        {highlights.map(({ meta, text }, i) => (
-          <li class="py-8 sm:px-7 border-t sm:border-t-0 sm:border-l border-line first:border-t-0" data-reveal={String(i * 70)}>
+        {stats.map(({ meta, num, suffix, label }, i) => (
+          <li class="group py-8 sm:px-7 border-t sm:border-t-0 sm:border-l border-line first:border-t-0 transition-colors hover:bg-paper" data-reveal={String(i * 70)}>
             <p class="font-mono text-[11px] uppercase tracking-[0.06em] text-blue-500">{meta}</p>
-            <p class="text-[15.5px] leading-snug mt-2.5 text-ink">{text}</p>
+            <p class="stat-num font-serif font-semibold text-5xl md:text-6xl tracking-[-0.03em] mt-3 text-ink group-hover:text-blue-700 transition-colors">
+              <span data-countup={String(num)} data-suffix={suffix}>0{suffix}</span>
+            </p>
+            <p class="text-[14px] leading-snug mt-2 text-muted">{label}</p>
           </li>
         ))}
       </ul>
@@ -141,4 +153,27 @@ const jsonLd = {
       </a>
     </div>
   </section>
+
+  <script>
+    // Rotating typewriter for the hero role line
+    const typer = document.getElementById('role-typer');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (typer && !reduce) {
+      let roles: string[] = [];
+      try { roles = JSON.parse(typer.dataset.roles || '[]'); } catch (_) {}
+      if (roles.length > 1) {
+        let i = 0, j = 0, deleting = false;
+        typer.textContent = '';
+        const loop = () => {
+          const word = roles[i];
+          typer.textContent = deleting ? word.slice(0, j--) : word.slice(0, j++);
+          let delay = deleting ? 35 : 70;
+          if (!deleting && j > word.length) { deleting = true; delay = 1500; }
+          else if (deleting && j < 0) { deleting = false; j = 0; i = (i + 1) % roles.length; delay = 300; }
+          setTimeout(loop, delay);
+        };
+        setTimeout(loop, 1200);
+      }
+    }
+  </script>
 </Layout>

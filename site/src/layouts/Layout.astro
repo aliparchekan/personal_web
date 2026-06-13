@@ -67,8 +67,13 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
       class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-blue-700 focus:text-on-accent focus:px-4 focus:py-2 focus:rounded"
     >Skip to main content</a>
 
-    <!-- Decorative background: fine grid + signal arcs (wireless-sensing motif) -->
+    <!-- Decorative background: aurora glow + fine grid + signal arcs (wireless-sensing motif) -->
     <div aria-hidden="true" class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+      <div class="aurora">
+        <div class="aurora__blob b1"></div>
+        <div class="aurora__blob b2"></div>
+        <div class="aurora__blob b3"></div>
+      </div>
       <div class="absolute inset-0 bg-deco-grid"></div>
       <svg
         class="absolute -top-24 -right-24 w-[480px] h-[480px] md:w-[640px] md:h-[640px] text-blue-700 opacity-[0.06] dark:opacity-[0.08]"
@@ -169,6 +174,42 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
       </div>
     </footer>
 
+    <!-- ═══ AI chat avatar ═══ -->
+    <button id="chat-fab" class="chat-fab" aria-label="Ask Ali's AI assistant">
+      <span class="avatar-ring" aria-hidden="true"><span>✦</span></span>
+      Ask&nbsp;Ali's&nbsp;AI
+    </button>
+
+    <aside id="chat-panel" class="chat-panel" role="dialog" aria-modal="false" aria-label="Ask Ali's AI assistant" aria-hidden="true">
+      <div class="chat-head">
+        <div class="h-avatar">AP</div>
+        <div>
+          <div class="h-title">Ali's AI assistant</div>
+          <div class="h-sub"><span class="live-dot"></span> Online · ask me anything</div>
+        </div>
+        <button id="chat-close" class="chat-close" aria-label="Close chat">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+
+      <div id="chat-log" class="chat-log" aria-live="polite"></div>
+
+      <div id="chat-chips" class="chat-chips">
+        <button class="chat-chip" data-q="What's your research about?">Research</button>
+        <button class="chat-chip" data-q="What's your teaching experience?">Teaching</button>
+        <button class="chat-chip" data-q="Tell me about your industry / AI work">Industry & AI</button>
+        <button class="chat-chip" data-q="Can I book tutoring?">Tutoring</button>
+        <button class="chat-chip" data-q="How do I contact you?">Contact</button>
+      </div>
+
+      <form id="chat-form" class="chat-form">
+        <input id="chat-input" class="chat-input" type="text" autocomplete="off" placeholder="Ask about Ali's work…" aria-label="Your message" />
+        <button class="chat-send" type="submit" aria-label="Send">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+    </aside>
+
     <script>
       // Mobile menu
       const btn = document.getElementById('mobile-menu-btn');
@@ -206,6 +247,44 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
       } else {
         els.forEach((el) => el.classList.add('is-visible'));
       }
+
+      // ── Count-up numbers ([data-countup="42"], optional data-suffix) ──
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const counters = document.querySelectorAll<HTMLElement>('[data-countup]');
+      const runCount = (el: HTMLElement) => {
+        const target = parseFloat(el.dataset.countup || '0');
+        const suffix = el.dataset.suffix || '';
+        const dur = 1400;
+        if (reduceMotion) { el.textContent = target + suffix; return; }
+        const start = performance.now();
+        const tick = (now: number) => {
+          const p = Math.min((now - start) / dur, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      };
+      if ('IntersectionObserver' in window && counters.length) {
+        const cio = new IntersectionObserver((entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) { runCount(e.target as HTMLElement); cio.unobserve(e.target); }
+          }
+        }, { threshold: 0.5 });
+        counters.forEach((c) => cio.observe(c));
+      } else {
+        counters.forEach((c) => runCount(c));
+      }
     </script>
+
+    <!-- ═══ Chat engine ═══ -->
+    <script is:inline define:vars={{ BASE }}>
+      window.__ALI_BASE__ = BASE;
+      // To enable real Claude-powered answers, deploy the Cloudflare Worker
+      // (see AI-CHAT.md) and paste its URL below. Leave null to use the
+      // built-in knowledge-base responder (works on static hosting).
+      window.__CHAT_ENDPOINT__ = null;
+    </script>
+    <script src={`${BASE}/chat.js`} defer></script>
   </body>
 </html>
